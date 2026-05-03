@@ -24,11 +24,6 @@ User → Flask App → Supabase (Cloud DB)
 - Supabase (Cloud DB)
 - REST API
 
-## ▶️ How to Run
-```bash
-pip install flask requests
-python app.py
-
 ---
 cloud-backup-project/
 │
@@ -38,3 +33,10 @@ cloud-backup-project/
 │   ├── register.html
 │   ├── dashboard.html
 │   ├── admin.html
+
+
+## ▶️ How to Run
+```bash
+pip install flask requests
+python app.py
+
