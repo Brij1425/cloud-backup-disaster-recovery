@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(120deg, #eef2f7, #dbe6f6);
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(90deg, #2c3e50, #3498db);
+            color: white;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .header-actions a {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 14px;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .header-actions a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            margin: 25px auto;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* USER CARD */
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        /* FILE LIST */
+        .file {
+            background: #f4f6f9;
+            padding: 8px 10px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        /* BUTTON */
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .empty {
+            color: gray;
+            font-size: 13px;
+        }
+
+        /* STATS BAR */
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-title {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <div class="header-title">🛠 Admin Control Panel</div>
+
+    <div class="header-actions">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-title">Total Users</div>
+            <div class="stat-value">{{ data|length }}</div>
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-title">Total Files</div>
+            <div class="stat-value">
+                {{ data.values() | map('length') | sum }}
+            </div>
+        </div>
+    </div>
+
+    <!-- USERS GRID -->
+    <div class="grid">
+
+        {% for user, files in data.items() %}
+        <div class="card">
+
+            <div class="card-header">👤 {{ user }}</div>
+
+            {% if files %}
+                {% for file in files %}
+                <div class="file">
+                    {{ file }}
+
+                    <a class="delete-btn"
+                       href="/admin/delete/{{ user }}/{{ file }}"
+                       onclick="return confirmDelete()">Delete</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty">No files available</div>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<script>
+function confirmDelete() {
+    return confirm("Are you sure you want to delete this file?");
+}
+</script>
+
+</body>
+</html>

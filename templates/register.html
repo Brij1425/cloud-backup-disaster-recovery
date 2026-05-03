@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI';
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .register-btn { background: #2ecc71; }
+        .login-btn { background: #3498db; }
+
+        .error {
+            background: red;
+            color: white;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Register</h2>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST">
+        <input name="username" placeholder="Username">
+        <input name="password" type="password" placeholder="Password">
+        <button class="register-btn">Register</button>
+    </form>
+
+    <form action="/">
+        <button class="login-btn">Back to Login</button>
+    </form>
+</div>
+
+</body>
+</html>
