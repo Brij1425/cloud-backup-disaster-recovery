@@ -6,13 +6,20 @@ Cloud-Based Automated Backup and Disaster Recovery System
 ## 📌 Overview
 This project is a cloud-based backup and disaster recovery system developed using Flask and Supabase. It ensures secure data storage and recovery in case of failure.
 
+It combines:
+- 🌐 Cloud database (Supabase)
+- 💻 Local backup storage
+- 🔐 Secure authentication
+
 ## 🚀 Features
-- User Registration & Login
-- Secure Password Hashing
-- File Upload & Backup
-- File Restore & Delete
-- Admin Panel for Monitoring
-- Cloud Database Integration (Supabase)
+- 🔐 User Registration & Login (Password Hashing)
+- ☁️ Cloud Database Integration (Supabase)
+- 📤 File Upload & Backup
+- 🔄 File Restore & Recovery
+- 🗑️ File Delete Functionality
+- 👨‍💻 Admin Panel (User & File Control)
+- 🔍 Search & Organized Dashboard
+
 
 ## 🏗️ Architecture
 User → Flask App → Supabase (Cloud DB)
@@ -25,18 +32,25 @@ User → Flask App → Supabase (Cloud DB)
 - REST API
 
 ---
-cloud-backup-project/
+## 📁 Project Structure
+cloud-backup-system/
 │
 ├── app.py
+├── requirements.txt
+├── README.md
+│
 ├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── dashboard.html
-│   ├── admin.html
-
+│ ├── login.html
+│ ├── register.html
+│ ├── dashboard.html
+│ ├── admin.html
 
 ## ▶️ How to Run
-```bash
-pip install flask requests
+```bash/ CMD
+git clone https://github.com/YOUR_USERNAME/cloud-backup-disaster-recovery.git
+cd cloud-backup-disaster-recovery
+pip install -r requirements.txt
 python app.py
 
+👨‍💻 Author
+Brijnath Mandal
