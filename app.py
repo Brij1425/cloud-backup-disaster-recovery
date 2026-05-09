@@ -7,8 +7,11 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-SUPABASE_URL = "https://ztoavfdypxiclumvfsnl.supabase.co"
-SUPABASE_KEY = "sb_publishable_nfJ17fdwbbpeTst9esx21A_m5jlqToj"
+SUPABASE_URL = "URL for your created project from Supabase"
+SUPABASE_KEY = "Your Supabase Key"
+
+
+
 
 app = Flask(__name__)
 app.secret_key = "secret123"
